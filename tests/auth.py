@@ -3,4 +3,16 @@
 import unasapi
 
 unasTestApi = unasapi.Api()
-print(unasTestApi.AuthByKey('dfsdfsd'))
+
+try:
+    unasTestApi.AuthByKey('dfsdfsd')
+except unasapi.AuthByKeyError:
+    print("AuthByKeyError: OK")
+
+
+try:
+    unasTestApi.AuthByKey('XXXXXXXXXXXX')
+    print("AuthByKey: OK")
+except:
+    print("AuthByKey: FAIL ")
+    raise
