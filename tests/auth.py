@@ -1,6 +1,9 @@
 
-
+import json
 import unasapi
+
+with open( "tests/config.json", 'r') as file:
+    data_JSON = json.load(file)
 
 unasTestApi = unasapi.Api()
 
@@ -11,8 +14,8 @@ except unasapi.AuthByKeyError:
 
 
 try:
-    unasTestApi.AuthByKey('XXXXXXXXXXXX')
+    unasTestApi.AuthByKey(data_JSON['apikey'])
     print("AuthByKey: OK")
 except:
-    print("AuthByKey: FAIL ")
+    print("AuthByKey: FAIL")
     raise
