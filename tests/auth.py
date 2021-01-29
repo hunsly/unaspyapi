@@ -18,4 +18,17 @@ try:
     print("AuthByKey: OK")
 except:
     print("AuthByKey: FAIL")
-    raise
+
+try:
+    unasTestApi.getOrder()
+    print("getOrder empty args: FAIL")
+except unasapi.GetOrderEmptyRequestError:
+    print("AuthByKey empty args: OK")
+
+try:
+    unasTestApi.getOrder(Key="82082-526197")
+    print("getOrder good key: OK")
+except unasapi.GetOrderEmptyRequestError:
+    print("AuthByKey good key: FAIL")
+    
+
